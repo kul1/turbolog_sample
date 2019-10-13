@@ -1,9 +1,8 @@
-class User
+class Jinda::User
   include Mongoid::Document
 
   include Mongoid::Attributes::Dynamic
-  # devise :omniauthable, :omniauth_providers => [:facebook]
-  devise :omniauthable, :omniauth_providers => [:google]
+  devise :omniauthable, :omniauth_providers => [:facebook]
   def self.from_omniauth(auth)
      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
      user.email = auth.info.email
